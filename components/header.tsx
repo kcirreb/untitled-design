@@ -12,10 +12,7 @@ export default function Header() {
     <div className="flex items-center justify-between w-full">
       <div>Untitled Design</div>
       <div className="flex gap-1">
-        <Button
-          asChild
-          className="border border-input bg-background hover:bg-accent text-accent-foreground h-10 w-10 p-0"
-        >
+        <Button asChild variant="outline" size="icon">
           <Link
             href={"https://github.com/kcirreb/untitled-design"}
             target="_blank"

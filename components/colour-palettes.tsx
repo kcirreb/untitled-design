@@ -10,7 +10,8 @@ import {
 } from "./ui/card";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
-import { ReloadIcon } from "@radix-ui/react-icons";
+import { CopyIcon, UpdateIcon } from "@radix-ui/react-icons";
+import { useToast } from "./ui/use-toast";
 
 const defaultColourPalettes: string[] = [
   "#BBBBBB",
@@ -25,6 +26,8 @@ export default function ColourPalettes() {
     defaultColourPalettes
   );
   const [isLoading, setIsLoading] = useState<Boolean>(false);
+
+  const { toast } = useToast();
 
   const rgbToHex = (r: number, g: number, b: number) =>
     "#" +
@@ -73,8 +76,20 @@ export default function ColourPalettes() {
                   style={{ backgroundColor: `${colour}` }}
                 ></div>
               </PopoverTrigger>
-              <PopoverContent>
+              <PopoverContent className="flex items-center justify-between w-64">
                 <div>{colour}</div>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => {
+                    navigator.clipboard.writeText(`${colour}`);
+                    toast({
+                      description: "Copied colour to clipboard",
+                    });
+                  }}
+                >
+                  <CopyIcon className="h-4 w-4" />
+                </Button>
               </PopoverContent>
             </Popover>
           ))}
@@ -83,12 +98,12 @@ export default function ColourPalettes() {
       <CardFooter>
         {isLoading ? (
           <Button disabled>
-            <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+            <UpdateIcon className="mr-2 h-4 w-4 animate-spin" />
             Generate
           </Button>
         ) : (
           <Button onClick={fetchColourPalettes}>
-            <ReloadIcon className="mr-2 h-4 w-4" />
+            <UpdateIcon className="mr-2 h-4 w-4" />
             Generate
           </Button>
         )}
