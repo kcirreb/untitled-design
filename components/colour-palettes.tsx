@@ -1,17 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./ui/card";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 import { ReloadIcon } from "@radix-ui/react-icons";
 
 const defaultColourPalettes: string[] = [
-  "#333333",
-  "#555555",
-  "#777777",
-  "#999999",
   "#BBBBBB",
+  "#999999",
+  "#777777",
+  "#555555",
+  "#333333",
 ];
 
 export default function ColourPalettes() {
@@ -35,7 +41,7 @@ export default function ColourPalettes() {
     try {
       const response = await fetch("http://colormind.io/api/", {
         method: "POST",
-        body: JSON.stringify({ model: "default" }),
+        body: JSON.stringify({ model: "ui" }),
       });
       const data = await response.json();
 
@@ -58,12 +64,12 @@ export default function ColourPalettes() {
         <CardTitle>Colour Palettes</CardTitle>
       </CardHeader>
       <CardContent>
-        <div>
+        <div className="flex">
           {colourPalettes.map((colour, index) => (
             <Popover key={index}>
-              <PopoverTrigger className="w-1/5">
+              <PopoverTrigger className="w-1/5 aspect-square">
                 <div
-                  className="h-48 w-full"
+                  className="h-full w-full"
                   style={{ backgroundColor: `${colour}` }}
                 ></div>
               </PopoverTrigger>
@@ -73,20 +79,20 @@ export default function ColourPalettes() {
             </Popover>
           ))}
         </div>
-        <div>
-          {isLoading ? (
-            <Button disabled>
-              <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-              Generate
-            </Button>
-          ) : (
-            <Button onClick={fetchColourPalettes}>
-              <ReloadIcon className="mr-2 h-4 w-4" />
-              Generate
-            </Button>
-          )}
-        </div>
       </CardContent>
+      <CardFooter>
+        {isLoading ? (
+          <Button disabled>
+            <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+            Generate
+          </Button>
+        ) : (
+          <Button onClick={fetchColourPalettes}>
+            <ReloadIcon className="mr-2 h-4 w-4" />
+            Generate
+          </Button>
+        )}
+      </CardFooter>
     </Card>
   );
 }
