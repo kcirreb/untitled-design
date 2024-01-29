@@ -44,7 +44,6 @@ export default function ColourPalettes() {
     try {
       const response = await fetch("http://colormind.io/api/", {
         method: "POST",
-        mode: "no-cors",
         body: JSON.stringify({ model: "ui" }),
       });
       const data = await response.json();
