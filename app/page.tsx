@@ -1,6 +1,6 @@
 import Editor from "@/components/editor";
 import Header from "@/components/header";
-import Examples from "@/components/examples";
+import Demo from "@/components/demo";
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col gap-4 w-full">
         <div className="text-3xl font-bold">Examples</div>
-        <Examples />
+        <Demo />
       </div>
     </main>
   );

@@ -5,7 +5,7 @@ import TextCard from "./cards/text-card";
 import TableCard from "./cards/table-card";
 import FAQsCard from "./cards/faqs-card";
 
-export default function Examples() {
+export default function Demo() {
   return (
     <div className="grid md:grid-cols-2 gap-4">
       <div className="grid gap-4 xl:grid-cols-2">
