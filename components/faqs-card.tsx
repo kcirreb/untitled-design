@@ -15,9 +15,7 @@ export default function FAQsCard() {
       <CardContent>
         <Accordion type="single" collapsible>
           <AccordionItem value="item-1">
-            <AccordionTrigger>
-              What payment methods do you accept?
-            </AccordionTrigger>
+            <AccordionTrigger>How can I pay?</AccordionTrigger>
             <AccordionContent>
               We accept various payment methods including credit cards (Visa,
               Mastercard, American Express), PayPal, and bank transfers.

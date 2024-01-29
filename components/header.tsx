@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <div className="flex items-center justify-between w-full">
-      <div>Untitled Design</div>
+      <div className="font-medium">Untitled Design</div>
       <div className="flex gap-1">
         <Button asChild variant="outline" size="icon">
           <Link
