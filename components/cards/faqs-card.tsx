@@ -3,8 +3,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "./ui/accordion";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+} from "../ui/accordion";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 export default function FAQsCard() {
   return (

@@ -1,4 +1,4 @@
-import { Button } from "./ui/button";
+import { Button } from "../ui/button";
 import {
   Card,
   CardContent,
@@ -6,9 +6,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./ui/card";
-import { Label } from "./ui/label";
-import { Switch } from "./ui/switch";
+} from "../ui/card";
+import { Label } from "../ui/label";
+import { Switch } from "../ui/switch";
 
 export default function PermissionsCard() {
   return (

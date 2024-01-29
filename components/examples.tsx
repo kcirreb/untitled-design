@@ -1,9 +1,9 @@
-import SalesCard from "./sales-card";
-import PermissionsCard from "./permissions-card";
-import SignInCard from "./sign-in-card";
-import TextCard from "./text-card";
-import TableCard from "./table-card";
-import FAQsCard from "./faqs-card";
+import SalesCard from "./cards/sales-card";
+import PermissionsCard from "./cards/permissions-card";
+import SignInCard from "./cards/sign-in-card";
+import TextCard from "./cards/text-card";
+import TableCard from "./cards/table-card";
+import FAQsCard from "./cards/faqs-card";
 
 export default function Examples() {
   return (
@@ -18,7 +18,6 @@ export default function Examples() {
           <FAQsCard />
         </div>
       </div>
-
       <div className="space-y-4">
         <TextCard />
         <TableCard />

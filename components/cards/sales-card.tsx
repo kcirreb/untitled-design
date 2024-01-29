@@ -6,7 +6,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "./ui/card";
+} from "../ui/card";
 import { Line, LineChart, ResponsiveContainer } from "recharts";
 
 export default function SalesCard() {
