@@ -11,7 +11,7 @@ export default function Home() {
         <Editor />
       </div>
       <div className="flex flex-col gap-4 w-full">
-        <div className="text-3xl font-bold">Examples</div>
+        <div className="text-3xl font-bold">Demo</div>
         <Demo />
       </div>
     </main>
