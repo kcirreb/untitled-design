@@ -8,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 import { CopyIcon, UpdateIcon } from "@radix-ui/react-icons";
 import { useToast } from "./ui/use-toast";
@@ -69,29 +68,25 @@ export default function ColourPalettes() {
       <CardContent>
         <div className="flex">
           {colourPalettes.map((colour, index) => (
-            <Popover key={index}>
-              <PopoverTrigger className="w-1/5 aspect-square">
-                <div
-                  className="h-full w-full"
-                  style={{ backgroundColor: `${colour}` }}
-                ></div>
-              </PopoverTrigger>
-              <PopoverContent className="flex items-center justify-between w-64">
-                <div>{colour}</div>
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={() => {
-                    navigator.clipboard.writeText(`${colour}`);
-                    toast({
-                      description: "Copied colour to clipboard",
-                    });
-                  }}
-                >
-                  <CopyIcon className="h-4 w-4" />
-                </Button>
-              </PopoverContent>
-            </Popover>
+            <div
+              key={index}
+              className="flex items-center justify-center group w-1/5 aspect-square"
+              style={{ backgroundColor: `${colour}` }}
+            >
+              <Button
+                variant="default"
+                size="icon"
+                className="hidden group-hover:inline-flex"
+                onClick={() => {
+                  navigator.clipboard.writeText(`${colour}`);
+                  toast({
+                    description: "Copied colour to clipboard",
+                  });
+                }}
+              >
+                <CopyIcon className="h-4 w-4" />
+              </Button>
+            </div>
           ))}
         </div>
       </CardContent>
