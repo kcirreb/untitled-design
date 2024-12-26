@@ -14,10 +14,9 @@ import { useToast } from "./ui/use-toast";
 
 const defaultColourPalettes: string[] = [
   "#BBBBBB",
-  "#999999",
-  "#777777",
+  "#888888",
   "#555555",
-  "#333333",
+  "#222222",
 ];
 
 export default function ColourPalettes() {
@@ -28,30 +27,43 @@ export default function ColourPalettes() {
 
   const { toast } = useToast();
 
-  const rgbToHex = (r: number, g: number, b: number) =>
-    "#" +
-    [r, g, b]
-      .map((x) => {
-        const hex = x.toString(16);
-        return hex.length === 1 ? "0" + hex : hex;
-      })
-      .join("");
-
   const fetchColourPalettes = async () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch("http://colormind.io/api/", {
+      const response = await fetch("https://api.huemint.com/color", {
+        headers: {
+          "Content-Type": "application/json",
+        },
         method: "POST",
-        body: JSON.stringify({ model: "ui" }),
+        body: JSON.stringify({
+          mode: "transformer",
+          num_colors: 4,
+          temperature: "1.2",
+          num_results: 1,
+          adjacency: [
+            "0",
+            "35",
+            "50",
+            "65",
+            "35",
+            "0",
+            "15",
+            "30",
+            "50",
+            "15",
+            "0",
+            "15",
+            "65",
+            "30",
+            "15",
+            "0",
+          ],
+        }),
       });
       const data = await response.json();
 
-      const colourPalettes: string[] = data.result.map((colour: number[]) => {
-        const [r, g, b] = colour;
-        return rgbToHex(r, g, b);
-      });
-
+      const colourPalettes: string[] = data.results[0].palette;
       setColourPalettes(colourPalettes);
     } catch (error) {
       console.log(error);
@@ -70,7 +82,7 @@ export default function ColourPalettes() {
           {colourPalettes.map((colour, index) => (
             <div
               key={index}
-              className="flex items-center justify-center group w-1/5 aspect-square"
+              className="flex items-center justify-center group w-1/4 aspect-square"
               style={{ backgroundColor: `${colour}` }}
             >
               <Button
