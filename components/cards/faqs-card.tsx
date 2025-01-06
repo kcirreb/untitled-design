@@ -6,7 +6,11 @@ import {
 } from "../ui/accordion";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
-export default function FAQsCard() {
+export default function FAQsCard({
+  colourPalette,
+}: {
+  colourPalette: ColourPalette;
+}) {
   return (
     <Card>
       <CardHeader>

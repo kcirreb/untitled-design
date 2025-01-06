@@ -11,23 +11,16 @@ import {
 import { Button } from "./ui/button";
 import { CopyIcon, UpdateIcon } from "@radix-ui/react-icons";
 import { useToast } from "./ui/use-toast";
+import { HUEMINT_ADJACENCY } from "@/lib/constants";
+import { useColourPalette } from "./colour-palette-provider";
 
-const defaultColourPalettes: string[] = [
-  "#BBBBBB",
-  "#888888",
-  "#555555",
-  "#222222",
-];
-
-export default function ColourPalettes() {
-  const [colourPalettes, setColourPalettes] = useState<string[]>(
-    defaultColourPalettes
-  );
+export default function ColourPalette() {
+  const { colourPalette, setColourPalette } = useColourPalette();
   const [isLoading, setIsLoading] = useState<Boolean>(false);
 
   const { toast } = useToast();
 
-  const fetchColourPalettes = async () => {
+  const fetchColourPalette = async () => {
     setIsLoading(true);
 
     try {
@@ -41,30 +34,18 @@ export default function ColourPalettes() {
           num_colors: 4,
           temperature: "1.2",
           num_results: 1,
-          adjacency: [
-            "0",
-            "35",
-            "50",
-            "65",
-            "35",
-            "0",
-            "15",
-            "30",
-            "50",
-            "15",
-            "0",
-            "15",
-            "65",
-            "30",
-            "15",
-            "0",
-          ],
+          adjacency: HUEMINT_ADJACENCY,
         }),
       });
       const data = await response.json();
 
-      const colourPalettes: string[] = data.results[0].palette;
-      setColourPalettes(colourPalettes);
+      const colourPalette: ColourPalette = {
+        background: data.results[0].palette[0],
+        primary: data.results[0].palette[1],
+        secondary: data.results[0].palette[2],
+        accent: data.results[0].palette[3],
+      };
+      setColourPalette(colourPalette);
     } catch (error) {
       console.log(error);
     }
@@ -79,7 +60,7 @@ export default function ColourPalettes() {
       </CardHeader>
       <CardContent>
         <div className="flex">
-          {colourPalettes.map((colour, index) => (
+          {Object.entries(colourPalette).map(([index, colour]) => (
             <div
               key={index}
               className="flex items-center justify-center group w-1/4 aspect-square"
@@ -109,7 +90,7 @@ export default function ColourPalettes() {
             Generate
           </Button>
         ) : (
-          <Button onClick={fetchColourPalettes}>
+          <Button onClick={fetchColourPalette}>
             <UpdateIcon className="mr-2 h-4 w-4" />
             Generate
           </Button>

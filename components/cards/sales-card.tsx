@@ -1,15 +1,13 @@
 "use client";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "../ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Line, LineChart, ResponsiveContainer } from "recharts";
 
-export default function SalesCard() {
+export default function SalesCard({
+  colourPalette,
+}: {
+  colourPalette: ColourPalette;
+}) {
   const data = [
     { count: 2000 },
     { count: 3500 },

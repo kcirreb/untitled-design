@@ -10,7 +10,11 @@ import {
 import { Label } from "../ui/label";
 import { Switch } from "../ui/switch";
 
-export default function PermissionsCard() {
+export default function PermissionsCard({
+  colourPalette,
+}: {
+  colourPalette: ColourPalette;
+}) {
   return (
     <Card>
       <CardHeader>

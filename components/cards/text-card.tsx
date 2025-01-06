@@ -6,7 +6,11 @@ import {
   CardTitle,
 } from "../ui/card";
 
-export default function TextCard() {
+export default function TextCard({
+  colourPalette,
+}: {
+  colourPalette: ColourPalette;
+}) {
   return (
     <Card>
       <CardHeader>

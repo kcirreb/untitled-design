@@ -10,7 +10,11 @@ import { Button } from "../ui/button";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 
-export default function SignInCard() {
+export default function SignInCard({
+  colourPalette,
+}: {
+  colourPalette: ColourPalette;
+}) {
   return (
     <Card>
       <CardHeader>
