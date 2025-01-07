@@ -3,11 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Line, LineChart, ResponsiveContainer } from "recharts";
 
-export default function SalesCard({
-  colourPalette,
-}: {
-  colourPalette: ColourPalette;
-}) {
+export default function SalesCard() {
   const data = [
     { count: 2000 },
     { count: 3500 },

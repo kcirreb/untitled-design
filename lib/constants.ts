@@ -1,11 +1,11 @@
 export const DEFAULT_COLOUR_PALETTE: ColourPalette = {
-  background: "#f9f9f9",
-  primary: "#2d3748",
-  secondary: "#e2e8f0",
-  accent: "#f56565",
+  background: "#eaeced",
+  foreground: "#e94c8c",
+  primary: "#b32358",
+  secondary: "#5d283a",
 };
 
-export const HUEMINT_ADJACENCY: string[] = [
+export const HUEMINT_ADJACENCY_MATRIX: string[] = [
   "0",
   "35",
   "50",

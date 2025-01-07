@@ -18,11 +18,7 @@ const orders = [
   { orderNo: "1032", paymentStatus: "Pending", totalAmount: "$379.00" },
 ];
 
-export default function TableCard({
-  colourPalette,
-}: {
-  colourPalette: ColourPalette;
-}) {
+export default function TableCard() {
   return (
     <Card>
       <Table>
